@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://e56xipt3664c"]
+[gd_scene load_steps=5 format=3 uid="uid://e56xipt3664c"]
 
 [ext_resource type="Theme" uid="uid://difw0bvmt52td" path="res://2D/ButtonTheme.tres" id="1_05h8r"]
 [ext_resource type="Script" uid="uid://wo0ibsy5qe1v" path="res://Scripts/UI/ColorAnimator.gd" id="2_05h8r"]
 [ext_resource type="StyleBox" uid="uid://cajsq6vpqbeyc" path="res://2D/ButtonStyleBox.tres" id="3_of6nh"]
+
+[sub_resource type="Curve" id="Curve_of6nh"]
+_data = [Vector2(0, 0), 0.0, 1.0, 0, 0, Vector2(1, 1), 1.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Node" type="Control"]
 layout_mode = 3
@@ -23,6 +27,11 @@ theme = ExtResource("1_05h8r")
 [node name="ColorAnimator" type="Node" parent="Button"]
 script = ExtResource("2_05h8r")
 buttonStyleBox = ExtResource("3_of6nh")
+pressedColor = Color(0.84253985, 0.9687584, 0.8707316, 1)
+hoverColor = Color(0.46834898, 0.79374385, 0.5618785, 1)
+curve = SubResource("Curve_of6nh")
 
+[connection signal="button_down" from="Button" to="Button/ColorAnimator" method="_on_button_button_down"]
+[connection signal="button_up" from="Button" to="Button/ColorAnimator" method="_on_button_button_up"]
 [connection signal="mouse_entered" from="Button" to="Button/ColorAnimator" method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="Button/ColorAnimator" method="_on_button_mouse_exited"]
