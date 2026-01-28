@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://e56xipt3664c"]
+
+[ext_resource type="Theme" uid="uid://difw0bvmt52td" path="res://2D/ButtonTheme.tres" id="1_05h8r"]
+[ext_resource type="Script" uid="uid://wo0ibsy5qe1v" path="res://Scripts/UI/ColorAnimator.gd" id="2_05h8r"]
+[ext_resource type="StyleBox" uid="uid://cajsq6vpqbeyc" path="res://2D/ButtonStyleBox.tres" id="3_of6nh"]
+
+[node name="Node" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 68.0
+offset_top = 72.0
+offset_right = 191.0
+offset_bottom = 200.0
+theme = ExtResource("1_05h8r")
+
+[node name="ColorAnimator" type="Node" parent="Button"]
+script = ExtResource("2_05h8r")
+buttonStyleBox = ExtResource("3_of6nh")
+
+[connection signal="mouse_entered" from="Button" to="Button/ColorAnimator" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="Button/ColorAnimator" method="_on_button_mouse_exited"]
