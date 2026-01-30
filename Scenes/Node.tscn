@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://e56xipt3664c"]
+[gd_scene load_steps=8 format=3 uid="uid://e56xipt3664c"]
 
 [ext_resource type="Theme" uid="uid://difw0bvmt52td" path="res://2D/ButtonTheme.tres" id="1_05h8r"]
+[ext_resource type="Texture2D" uid="uid://blcely4t06tva" path="res://2D/RoundedBG.png" id="1_fffut"]
 [ext_resource type="Script" uid="uid://wo0ibsy5qe1v" path="res://Scripts/UI/ColorAnimator.gd" id="2_05h8r"]
 [ext_resource type="StyleBox" uid="uid://cajsq6vpqbeyc" path="res://2D/ButtonStyleBox.tres" id="3_of6nh"]
 [ext_resource type="Script" uid="uid://cvp3dpkojbh8l" path="res://Scripts/UI/TransformAnimator.gd" id="4_r1888"]
@@ -15,31 +16,50 @@ point_count = 2
 
 [node name="Node" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.4, 0.4)
 
-[node name="Button" type="Button" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.9906704, 0.80817497, 0.82004964, 1)
+show_behind_parent = true
 layout_mode = 1
-anchors_preset = -1
-offset_left = 0.15999603
-offset_right = 128.16
-offset_bottom = 128.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 76.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(70, 70)
+texture = ExtResource("1_fffut")
+
+[node name="Button" type="Button" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
 pivot_offset = Vector2(64, 64)
 theme = ExtResource("1_05h8r")
 
-[node name="ColorAnimator" type="Node" parent="Button"]
-script = ExtResource("2_05h8r")
-buttonStyleBox = ExtResource("3_of6nh")
-curve = SubResource("Curve_of6nh")
-
-[node name="TransformAnimator" type="Node" parent="Button"]
-script = ExtResource("4_r1888")
-curve = SubResource("Curve_fffut")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Button"]
+[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect/Button"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -55,11 +75,20 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="button_down" from="Button" to="Button/ColorAnimator" method="_on_button_button_down"]
-[connection signal="button_down" from="Button" to="Button/TransformAnimator" method="_on_button_button_down"]
-[connection signal="button_up" from="Button" to="Button/ColorAnimator" method="_on_button_button_up"]
-[connection signal="button_up" from="Button" to="Button/TransformAnimator" method="_on_button_button_up"]
-[connection signal="mouse_entered" from="Button" to="Button/ColorAnimator" method="_on_button_mouse_entered"]
-[connection signal="mouse_entered" from="Button" to="Button/TransformAnimator" method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="Button" to="Button/ColorAnimator" method="_on_button_mouse_exited"]
-[connection signal="mouse_exited" from="Button" to="Button/TransformAnimator" method="_on_button_mouse_exited"]
+[node name="ColorAnimator" type="Node" parent="TextureRect"]
+script = ExtResource("2_05h8r")
+buttonStyleBox = ExtResource("3_of6nh")
+curve = SubResource("Curve_of6nh")
+
+[node name="TransformAnimator" type="Node" parent="TextureRect"]
+script = ExtResource("4_r1888")
+curve = SubResource("Curve_fffut")
+
+[connection signal="button_down" from="TextureRect/Button" to="TextureRect/ColorAnimator" method="_on_button_button_down"]
+[connection signal="button_down" from="TextureRect/Button" to="TextureRect/TransformAnimator" method="_on_button_button_down"]
+[connection signal="button_up" from="TextureRect/Button" to="TextureRect/ColorAnimator" method="_on_button_button_up"]
+[connection signal="button_up" from="TextureRect/Button" to="TextureRect/TransformAnimator" method="_on_button_button_up"]
+[connection signal="mouse_entered" from="TextureRect/Button" to="TextureRect/ColorAnimator" method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="TextureRect/Button" to="TextureRect/TransformAnimator" method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect/Button" to="TextureRect/ColorAnimator" method="_on_button_mouse_exited"]
+[connection signal="mouse_exited" from="TextureRect/Button" to="TextureRect/TransformAnimator" method="_on_button_mouse_exited"]

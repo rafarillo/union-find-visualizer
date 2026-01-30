@@ -7,10 +7,10 @@ class_name TransformAnimator extends Node
 var _targetSize: Vector2
 var _counter: float = 0
 var _originalSize: Vector2 = Vector2.ZERO
-var _button: Button
+var _button: Control
 
 func _ready() -> void:
-	_button = get_parent() as Button
+	_button = get_parent() as Control
 	_originalSize = _button.scale
 	_targetSize = _originalSize
 
