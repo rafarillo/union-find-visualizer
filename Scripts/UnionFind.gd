@@ -25,3 +25,9 @@ func Find(element: int) -> int:
     if element != _elementsParents[element]:
         _elementsParents[element] = Find(_elementsParents[element])
     return _elementsParents[element]
+
+func AddElement() -> int:
+    var newIndex: int = _elementsParents.size()
+    _elementsParents.append(newIndex)
+    _rank.append(1)
+    return newIndex

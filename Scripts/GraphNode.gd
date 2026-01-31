@@ -29,11 +29,7 @@ func _process(delta: float) -> void:
 func KeepInsideBounds() -> void:
 	var screen_size: Vector2 = DisplayServer.window_get_size()
 	var node_size: Vector2 = $TextureRect.size * 0.5 * self.scale
-	
-	print("screen_size:", screen_size)
-	print("node_size:", node_size)
-	print("position:", self.position)
-	# Check left and right boundaries
+
 	if self.position.x - node_size.x <= 0:
 		self.position.x = node_size.x
 		_motionDirection.x = -_motionDirection.x
@@ -41,10 +37,12 @@ func KeepInsideBounds() -> void:
 		self.position.x = screen_size.x - node_size.x
 		_motionDirection.x = -_motionDirection.x
 
-	# Check top and bottom boundaries
 	if self.position.y - node_size.y <= 0:
 		self.position.y = node_size.y
 		_motionDirection.y = -_motionDirection.y
 	elif self.position.y + node_size.y >= screen_size.y:
 		self.position.y = screen_size.y - node_size.y	
 		_motionDirection.y = -_motionDirection.y
+
+func SetText(text: String) -> void:
+	$TextureRect/Button/RichTextLabel.text = text
