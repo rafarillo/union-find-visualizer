@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://e56xipt3664c"]
+[gd_scene load_steps=9 format=3 uid="uid://e56xipt3664c"]
 
 [ext_resource type="Theme" uid="uid://difw0bvmt52td" path="res://2D/ButtonTheme.tres" id="1_05h8r"]
 [ext_resource type="Texture2D" uid="uid://blcely4t06tva" path="res://2D/RoundedBG.png" id="1_fffut"]
+[ext_resource type="Script" uid="uid://6ocq2do0xlcs" path="res://Scripts/GraphNode.gd" id="1_n3k3c"]
 [ext_resource type="Script" uid="uid://wo0ibsy5qe1v" path="res://Scripts/UI/ColorAnimator.gd" id="2_05h8r"]
 [ext_resource type="StyleBox" uid="uid://cajsq6vpqbeyc" path="res://2D/ButtonStyleBox.tres" id="3_of6nh"]
 [ext_resource type="Script" uid="uid://cvp3dpkojbh8l" path="res://Scripts/UI/TransformAnimator.gd" id="4_r1888"]
@@ -24,6 +25,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
+script = ExtResource("1_n3k3c")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 self_modulate = Color(0.9906704, 0.80817497, 0.82004964, 1)
